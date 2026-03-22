@@ -7,7 +7,7 @@ import {
   Sparkles,
   ChevronRight,
   MessageSquareWarning,
-  UserCheck,
+  // UserCheck,
   Cpu
 } from 'lucide-react';
 

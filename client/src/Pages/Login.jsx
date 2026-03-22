@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  GraduationCap, 
-  BookOpen, 
-  Briefcase, 
+import {
+  ArrowLeft,
+  GraduationCap,
+  BookOpen,
+  Briefcase,
   ShieldCheck,
   ChevronRight,
   User,
@@ -62,31 +62,30 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-[#030014] text-slate-200 font-sans relative overflow-hidden flex flex-col items-center justify-center p-6">
-      
+
       {/* Background Glob */}
-      <div 
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] blur-[150px] rounded-full pointer-events-none transition-colors duration-1000 ${
-          selectedRole === 'student' ? 'bg-cyan-600/10' :
+      <div
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] blur-[150px] rounded-full pointer-events-none transition-colors duration-1000 ${selectedRole === 'student' ? 'bg-cyan-600/10' :
           selectedRole === 'mentor' ? 'bg-indigo-600/10' :
-          selectedRole === 'staff' ? 'bg-fuchsia-600/10' :
-          selectedRole === 'admin' ? 'bg-rose-600/10' :
-          'bg-cyan-600/10'
-        }`} 
+            selectedRole === 'staff' ? 'bg-fuchsia-600/10' :
+              selectedRole === 'admin' ? 'bg-rose-600/10' :
+                'bg-cyan-600/10'
+          }`}
       />
 
       {/* Nav Actions */}
-      <button 
+      <button
         onClick={() => {
           if (selectedRole) setSelectedRole(null);
           else navigate('/');
-        }} 
+        }}
         className="absolute top-8 left-8 flex items-center gap-2 text-slate-400 hover:text-white transition-colors z-20"
       >
         <ArrowLeft size={20} /> <span className="text-sm font-semibold tracking-wider uppercase">Back</span>
       </button>
 
       <div className="relative z-10 w-full max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
-        
+
         {!selectedRole ? (
           <>
             <div className="text-center mb-16">
@@ -114,11 +113,11 @@ const Login = () => {
                       <p className="text-xs text-slate-400 leading-relaxed max-w-[200px]">{role.description}</p>
                     </div>
                   </div>
-                  
+
                   <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all opacity-50 group-hover:opacity-100 group-hover:translate-x-1">
                     <ChevronRight size={18} className="text-white" />
                   </div>
-                  
+
                 </button>
               ))}
             </div>
@@ -126,7 +125,7 @@ const Login = () => {
         ) : (
           <div className="max-w-md mx-auto animate-in zoom-in-95 duration-500">
             <div className={`bg-white/[0.03] border ${activeRole.glow} backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden`}>
-              
+
               <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r opacity-50 block w-full" style={{ backgroundImage: `linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent)` }}></div>
 
               <div className="text-center mb-10">
@@ -140,19 +139,19 @@ const Login = () => {
               </div>
 
               <form onSubmit={handleLogin} className="space-y-6">
-                
+
                 <div className="space-y-2 text-left">
                   <label className="text-xs font-bold tracking-wider uppercase text-slate-400 ml-1">{activeRole.title} ID</label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
                       <User size={18} />
                     </div>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
                       placeholder={`Enter your ${activeRole.title} ID`}
                       value={formData.id}
-                      onChange={(e) => setFormData({...formData, id: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, id: e.target.value })}
                       className="w-full bg-[#030014]/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all"
                     />
                   </div>
@@ -161,25 +160,25 @@ const Login = () => {
                 <div className="space-y-2 text-left">
                   <div className="flex justify-between items-center ml-1">
                     <label className="text-xs font-bold tracking-wider uppercase text-slate-400">Password</label>
-                    <a href="#" className="text-xs text-slate-400 hover:text-white transition-colors">Forgot Password?</a>
+                    <a href="#!s" className="text-xs text-slate-400 hover:text-white transition-colors">Forgot Password?</a>
                   </div>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500">
                       <Lock size={18} />
                     </div>
-                    <input 
-                      type="password" 
+                    <input
+                      type="password"
                       required
                       placeholder="••••••••"
                       value={formData.password}
-                      onChange={(e) => setFormData({...formData, password: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                       className="w-full bg-[#030014]/50 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all"
                     />
                   </div>
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className={`w-full relative group overflow-hidden rounded-2xl py-4 font-bold text-white shadow-lg mt-4 flex items-center justify-center gap-2`}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-r ${activeRole.color} opacity-90 group-hover:opacity-100 transition-opacity`}></div>
